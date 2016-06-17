@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "Calculator.h"
 #import "InfoViewController.h"
+#import "ThirdViewController.h"
 
 @interface ViewController ()
 
@@ -43,7 +44,6 @@
     self.overButton.enabled = NO;
     displayString = [NSMutableString stringWithCapacity: 40];
     myCalculator = [[Calculator alloc] init];
-    _colorToggle = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -203,8 +203,8 @@
 }
 
 - (IBAction)openNewAction:(UIButton*)sender {
-    [self performSegueWithIdentifier: @"blueview" sender: self];
-//    [self performSegueWithIdentifier: @"purpleview" sender: self];
+//    [self performSegueWithIdentifier: @"blueview" sender: self];
+    [self performSegueWithIdentifier: @"purpleview" sender: self];
 }
 
 -  (IBAction) unwindToViewControlle :(UIStoryboardSegue *) sender
@@ -220,6 +220,12 @@
         InfoViewController *infoView = [segue destinationViewController];
         infoView.delegate = self;
         infoView.myString = @"HelloWorld";
+    } else if([segue.identifier isEqualToString: @"purpleview"]) {
+        ThirdViewController *thirdView = [segue destinationViewController];
+        [thirdView changeColorFunc:^(UIColor *newColor) {
+            [self.view setBackgroundColor: newColor];
+        }];
+        
     }
     
 }
