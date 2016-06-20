@@ -11,6 +11,9 @@
 @interface ThirdViewController : UIViewController {
     void(^changeMainBackColor)(UIColor*);
 }
+
+//@property void(^newChangeMainBackColor)(UIColor *);
+
 - (IBAction)changeColor:(id)sender;
 
 - (void) changeColorFunc:(void(^)(UIColor*))myFunc;
